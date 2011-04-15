@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Matt Swain</string>
+	<key>CFBundleDisplayName</key>
+	<string>BugMeNot</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.macosxtips.bugmenot</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.1</string>
+	<key>CFBundleVersion</key>
+	<string>1.1</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Bars</key>
+		<array>
+			<dict>
+				<key>Filename</key>
+				<string>bar.html</string>
+				<key>Identifier</key>
+				<string>bugmenotbar</string>
+				<key>Label</key>
+				<string>BugMeNot</string>
+			</dict>
+		</array>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>showhide</string>
+				<key>Identifier</key>
+				<string>bugmenot</string>
+				<key>Image</key>
+				<string>toolbar.png</string>
+				<key>Label</key>
+				<string>BugMeNot</string>
+				<key>Palette Label</key>
+				<string>BugMeNot</string>
+				<key>Tool Tip</key>
+				<string>Toggle BugMeNot Bar</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>Start</key>
+			<array>
+				<string>bugmenot.js</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>Provides usernames and passwords to bypass compulsory registration</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
+	</dict>
+	<key>Update Manifest URL</key>
+	<string>http://www.macosxtips.co.uk/extensions/bugmenot.plist</string>
+	<key>Website</key>
+	<string>http://www.macosxtips.co.uk/extensions</string>
+</dict>
+</plist>

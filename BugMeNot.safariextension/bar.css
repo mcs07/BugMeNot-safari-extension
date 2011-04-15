@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 7px;
+}
+
+.container {
+	margin: 0;
+	padding: 1px 0px 2px 7px;
+	color: #282828;
+	font-weight: bold;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.4);
+	text-decoration: none;
+	border-radius: 8px;
+	cursor: default;
+	border: none;
+	background: none;
+}
+
+.account {
+	margin: 0;
+	padding: 0;
+	color: inherit;
+	font-weight: inherit;
+	text-shadow: inherit;
+	text-decoration: inherit;
+	display: inline-block;
+	border-radius: inherit;
+	cursor: inherit;
+	border: inherit;
+	background: transparent;
+}
+
+.cross {
+	margin: 0 0 0 2px;
+	padding: 0;
+	text-indent: -1000px;
+	display: inline-block;
+	cursor: inherit;
+	border: inherit;
+	background: transparent;
+    width: 14px;
+    height: 14px;
+}
+
+.container:hover {
+	color: #fff;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
+	background: rgba(0, 0, 0, 0.21) url(safari-resource:/ExtensionClose.png) no-repeat 100% 50%;
+}
+
+.account:hover {
+	color: inherit;
+	text-shadow: inherit;
+	background: transparent;
+}
+
+.cross:hover {
+	background: transparent url(safari-resource:/ExtensionCloseHovered.png) no-repeat 100% 50%;
+}
+
+.container:active, .container.toggled {
+	color: #fff;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.account:active, .account.toggled {
+	color: inherit;
+	text-shadow: inherit;
+	background: transparent;
+}
+
+.cross:active, .cross.toggled {
+	background: transparent url(safari-resource:/ExtensionCloseHovered.png) no-repeat 100% 50%;
+}
+
+.container.toggled, .container:active {
+	background: rgba(0, 0, 0, 0.49);
+}
