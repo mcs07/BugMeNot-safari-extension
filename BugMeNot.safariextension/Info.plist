@@ -22,8 +22,19 @@
 				<key>Filename</key>
 				<string>bar.html</string>
 				<key>Identifier</key>
-				<string>bugmenotbar</string>
+				<string>BugMeNotBar</string>
 				<key>Label</key>
+				<string>BugMeNot</string>
+			</dict>
+		</array>
+		<key>Context Menu Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>BugMeNotContext</string>
+				<key>Identifier</key>
+				<string>BugMeNotContext</string>
+				<key>Title</key>
 				<string>BugMeNot</string>
 			</dict>
 		</array>
@@ -31,9 +42,9 @@
 		<array>
 			<dict>
 				<key>Command</key>
-				<string>showhide</string>
+				<string>BugMeNotButton</string>
 				<key>Identifier</key>
-				<string>bugmenot</string>
+				<string>BugMeNotButton</string>
 				<key>Image</key>
 				<string>toolbar.png</string>
 				<key>Label</key>
@@ -41,7 +52,7 @@
 				<key>Palette Label</key>
 				<string>BugMeNot</string>
 				<key>Tool Tip</key>
-				<string>Toggle BugMeNot Bar</string>
+				<string>Toggle BugMeNot Toolbar</string>
 			</dict>
 		</array>
 	</dict>
