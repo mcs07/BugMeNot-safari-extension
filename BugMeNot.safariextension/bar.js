@@ -1,12 +1,6 @@
-safari.application.addEventListener("command", performCommand, false);
-safari.application.addEventListener("validate", validateCommand, false);
-
-var tabURL;
-var accountsArray;
-
 function performCommand(event) {
-    if (event.command === "showhide") {
-    	if (safari.self.browserWindow != safari.application.activeBrowserWindow)
+    if (event.command === 'showhide') {
+    	if (safari.self.browserWindow != app.activeBrowserWindow)
 			return;
         if (safari.self.visible) {
             safari.self.hide();
@@ -17,16 +11,11 @@ function performCommand(event) {
     }
 }
 
-function getHostname(str) {
-	var re = new RegExp('^(?:f|ht)tp(?:s)?\://([^/]+)', 'im');
-	return str.match(re)[1].toString();
-}
-
 function getAccounts() {
-	if (safari.self.browserWindow != safari.application.activeBrowserWindow)
+	if (safari.self.browserWindow != app.activeBrowserWindow)
 			return;
     document.body.innerHTML = "Searching for accounts...";
-    var currentURL = safari.application.activeBrowserWindow.activeTab.url;
+    var currentURL = app.activeBrowserWindow.activeTab.url;
     if (!currentURL) {
     	document.body.innerHTML = "No  accounts found";
     	return;
@@ -53,6 +42,11 @@ function getAccounts() {
     req.send(null);
 }
 
+function getHostname(str) {
+	var re = new RegExp('^(?:f|ht)tp(?:s)?\://([^/]+)', 'im');
+	return str.match(re)[1].toString();
+}
+
 function parseAccounts(responseText) {
 	var range = document.createRange();
 	range.selectNode(document.body);
@@ -76,7 +70,7 @@ function parseAccounts(responseText) {
 }
 
 function clickAccount(account) {
-    safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("fillLogin", account);
+    app.activeBrowserWindow.activeTab.page.dispatchMessage("fillLogin", account);
 }
 
 function removeAccount(i) {
@@ -86,9 +80,16 @@ function removeAccount(i) {
 
 function validateCommand(event) {    
     if (safari.self.visible) {
-        if (safari.application.activeBrowserWindow.activeTab.url !== tabURL) {
-            tabURL = safari.application.activeBrowserWindow.activeTab.url
+        if (app.activeBrowserWindow.activeTab.url !== tabURL) {
+            tabURL = app.activeBrowserWindow.activeTab.url
             getAccounts();
         }
     }
 }
+
+var app = safari.application,
+	tabURL = '',
+	accountsArray = new Array();
+	
+app.addEventListener('command', performCommand, false);
+app.addEventListener('validate', validateCommand, false);

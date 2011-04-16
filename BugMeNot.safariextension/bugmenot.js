@@ -1,9 +1,9 @@
-safari.self.addEventListener("message", handleMessage, false);
+safari.self.addEventListener('message', handleMessage, false);
 
-function handleMessage(msgEvent) {
-    if (msgEvent.name === "fillLogin") {
-        var username = msgEvent.message.login;
-        var password = msgEvent.message.password;
+function handleMessage(msg) {
+    if (msg.name === 'fillLogin') {
+        var username = msg.message.login;
+        var password = msg.message.password;
         var ufields = document.body.querySelectorAll('input[type="text"]')
         for(var i=0; i<ufields.length; i++) {
             ufields[i].value = username;
