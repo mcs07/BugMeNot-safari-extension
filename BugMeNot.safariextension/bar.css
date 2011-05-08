@@ -1,6 +1,26 @@
 body {
-    margin: 0;
-    padding: 7px;
+    padding: 4px;
+}
+
+#accountContainer {
+	overflow: hidden;
+    -webkit-mask: -webkit-gradient(linear, left bottom, right bottom, color-stop(0, rgba(0,0,0,1)), color-stop(0.95, rgba(0,0,0,1)), color-stop(0.98, rgba(0,0,0,0)));
+}
+
+#doneButton {
+	float: right;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fbfbfb), to(#dfdfdf));;
+	border: 0px solid #a6a6a6;
+	border-radius: 20px;
+	margin-top: 3px;
+	padding: 1px 7px 2px;
+	-webkit-box-shadow: black 0px 0px 2px;
+}
+
+#doneButton:active {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a1a1a1), to(#cecece));
+	border: 0px solid #555;
+	-webkit-box-shadow: black 0px 0px 3px;
 }
 
 .container {
@@ -10,14 +30,14 @@ body {
 	font-weight: bold;
 	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.4);
 	text-decoration: none;
-	border-radius: 8px;
+	border-radius: 12px;
 	cursor: default;
 	border: none;
 	background: none;
 }
 
 .account {
-	margin: 0;
+	margin: 3px 0;
 	padding: 0;
 	color: inherit;
 	font-weight: inherit;

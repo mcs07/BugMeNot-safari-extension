@@ -1,3 +1,10 @@
+function pageLoaded() {
+	$('doneButton').addEvent('click', function(event) {
+		safari.self.hide();
+	});
+	getAccounts();
+}
+
 function performCommand(event) {
 	switch (event.command) {
 	case 'BugMeNotButton':
@@ -36,28 +43,28 @@ function showHide() {
 function getAccounts() {
 	if (safari.self.browserWindow != app.activeBrowserWindow)
 			return;
-	document.body.innerHTML = 'Searching for accounts...';
+	accountContainer = $('accountContainer');
+	accountContainer.innerHTML = 'Searching for accounts...';
 	var currentURL = app.activeBrowserWindow.activeTab.url;
 	if (!currentURL) {
-		document.body.innerHTML = 'No  accounts found';
+		accountContainer.innerHTML = 'No  accounts found';
 		return;
 	}
 	var domain = getHostname(currentURL);
 	var bmnURL = 'http://www.bugmenot.com/view/'+escape(domain)+'?utm_source=extension&utm_medium=firefox';
-	console.log(bmnURL);
 	var req = new XMLHttpRequest();
 	req.open('GET', bmnURL, true);
 	req.onreadystatechange = function (aEvt) {  
 		if (req.readyState == 4) {  
 			if(req.status == 200) {
 				accountsArray = parseAccounts(req.responseText);
-				document.body.innerHTML = '';
+				accountContainer.innerHTML = '';
 				for (var i=0; i<accountsArray.length; i++) {
-					document.body.innerHTML += '<span class="container" id="container'+i+'"><button type="button" onclick="clickAccount(accountsArray['+i+']);" title="Choose this username/password" class="account">'+accountsArray[i].login+'/'+accountsArray[i].password+' '+accountsArray[i].rating+'%</button><button type="button" onclick="removeAccount('+i+');" title="Remove this username/password from the list" class="cross">X</button></span> ';
+					accountContainer.innerHTML += '<span class="container" id="container'+i+'"><button type="button" onclick="clickAccount(accountsArray['+i+']);" title="Choose this username/password" class="account">'+accountsArray[i].login+'/'+accountsArray[i].password+' '+accountsArray[i].rating+'%</button><button type="button" onclick="removeAccount('+i+');" title="Remove this username/password from the list" class="cross">X</button></span> ';
 				}
-				document.body.innerHTML += '<a href="http://www.bugmenot.com/view/'+escape(domain)+'">Provided by BugMeNot.com</a>';
+				accountContainer.innerHTML += '<a href="http://www.bugmenot.com/view/'+escape(domain)+'">Provided by BugMeNot.com</a>';
 			} else {
-				document.body.innerHTML = 'No accounts found';
+				accountContainer.innerHTML = 'No accounts found';
 			}
 		}  
 	};
@@ -96,8 +103,31 @@ function clickAccount(account) {
 }
 
 function removeAccount(i) {
-	var toDelete = document.body.querySelector('#container'+i);
-		toDelete.parentNode.removeChild(toDelete);
+	var toDelete = $('container'+i),
+		accountContainer = $('accountContainer');
+	// accountContainer.set('tween', {
+// 		property: 'margin-left',
+// 		duration: 300
+// 	});
+// 	toDelete.fade('out').get('tween').chain(function() {
+// 		accountContainer.tween('-50px');
+// 		toDelete.destroy();
+// 		accountContainer.set('styles', {marginLeft:'0px'});
+// 	});
+
+	toDelete.set('tween', {
+		duration: 200,
+		onComplete: function() {
+			var myFx = new Fx.Slide(toDelete,{
+				duration:300,
+				mode:'horizontal',
+				wrapper: new Element('span'),
+				onComplete: function() {
+					toDelete.destroy();
+				}
+			}).slideOut();
+		}
+	}).fade('out');
 }
 
 var app = safari.application,
@@ -106,3 +136,4 @@ var app = safari.application,
 	
 app.addEventListener('command', performCommand, false);
 app.addEventListener('validate', validateCommand, false);
+window.addEvent('domready', pageLoaded, false);
