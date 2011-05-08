@@ -105,16 +105,6 @@ function clickAccount(account) {
 function removeAccount(i) {
 	var toDelete = $('container'+i),
 		accountContainer = $('accountContainer');
-	// accountContainer.set('tween', {
-// 		property: 'margin-left',
-// 		duration: 300
-// 	});
-// 	toDelete.fade('out').get('tween').chain(function() {
-// 		accountContainer.tween('-50px');
-// 		toDelete.destroy();
-// 		accountContainer.set('styles', {marginLeft:'0px'});
-// 	});
-
 	toDelete.set('tween', {
 		duration: 200,
 		onComplete: function() {
