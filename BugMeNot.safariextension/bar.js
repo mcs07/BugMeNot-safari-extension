@@ -44,10 +44,10 @@ function getAccounts() {
 	if (safari.self.browserWindow != app.activeBrowserWindow)
 			return;
 	accountContainer = $('accountContainer');
-	accountContainer.innerHTML = 'Searching for accounts...';
+	accountContainer.innerHTML = '<div class="message">Searching for accounts...</div>';
 	var currentURL = app.activeBrowserWindow.activeTab.url;
 	if (!currentURL) {
-		accountContainer.innerHTML = 'No  accounts found';
+		accountContainer.innerHTML = '<div class="message">No  accounts found</div>';
 		return;
 	}
 	var domain = getHostname(currentURL);
@@ -64,7 +64,7 @@ function getAccounts() {
 				}
 				accountContainer.innerHTML += '<a href="http://www.bugmenot.com/view/'+escape(domain)+'">Provided by BugMeNot.com</a>';
 			} else {
-				accountContainer.innerHTML = 'No accounts found';
+				accountContainer.innerHTML = '<div class="message">No accounts found</div>';
 			}
 		}  
 	};
